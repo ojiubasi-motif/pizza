@@ -24,7 +24,7 @@ const Cart = () => {
 
   const createOrder = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      const res = await axios.post("https://yummie-pizza.vercel.app/api/orders", data);
       if (res.status === 201) {
         dispatch(reset());
         router.push(`/orders/${res.data._id}`);
@@ -42,7 +42,7 @@ const Cart = () => {
     };
 
     try {
-      const res  = await axios.post("http://localhost:3000/api/paystack", customerData);
+      const res  = await axios.post("https://yummie-pizza.vercel.app/api/paystack", customerData);
       if(res.status === 200){
         console.log(res);
         router.push(res.data.data.authorization_url)

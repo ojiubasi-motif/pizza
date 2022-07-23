@@ -47,6 +47,7 @@ export async function pstackh00k(req, res) {
       // Retrieve the request's body
     const event = req.body;
     // Do something with event 
+    console.log(event);
      
     } catch (error) {
       console.log('error returned from paystack event-->',error);
