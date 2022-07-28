@@ -1,6 +1,5 @@
 import dbConnect from "../../../util/mongo";
 // import Product from "../../../models/Product";
-import crypto from "crypto";
 import p_api from "paystack-api";
 const paystack = p_api(process.env.PAYSTACK_SECRET);
 
@@ -33,25 +32,4 @@ export default async function handler(req, res) {
       res.status(500).json(error);
     }
   }
-}
-
-export async function pstackh00k(req, res) {
-  const secret = process.env.SECRET_KEY;
-  //validate event
-  const hash = crypto
-    .createHmac("sha512", secret)
-    .update(JSON.stringify(req.body))
-    .digest("hex");
-  if (hash == req.headers["x-paystack-signature"]) {
-    try {
-      // Retrieve the request's body
-    const event = req.body;
-    // Do something with event 
-    console.log(event);
-     
-    } catch (error) {
-      console.log('error returned from paystack event-->',error);
-    }
-  }
-  res.send(200);
 }
