@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         // Retrieve the request's body
       const event = req.body;
       // Do something with event 
-      console.log(event);
+      alert(event);
        
       } catch (error) {
         console.log('error returned from paystack event-->',error);
